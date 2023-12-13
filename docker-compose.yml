@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  app:
+    image: node:20.10.0
+    restart: unless-stopped
+    command: bash -c "yarn && yarn start"
+    volumes:
+      - '.:/usr/src/app'
+    working_dir: /usr/src/app
