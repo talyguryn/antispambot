@@ -15,6 +15,14 @@ let botInfo = {};
 
 bot.on('polling_error', function(error){ console.log(error); });
 
+(async () => {
+    try {
+        botInfo = await bot.getMe();
+    } catch (e) {
+        console.log(e);
+    }
+})();
+
 const isGroupChat = (msg) => {
     return ['group', 'supergroup'].includes(msg.chat.type);
 }
@@ -110,16 +118,16 @@ bot.on('text', async (msg) => {
 });
 
 bot.onText(/\/spam/, async (msg) => {
-    if (await doesBotNeedToIgnoreMessage(msg, true)) return;
-
-    const replyMessage = msg.reply_to_message;
-
-    const options = {};
-    if (msg.is_topic_message) {
-        options.message_thread_id = msg.message_thread_id
-    }
-
     try {
+        if (await doesBotNeedToIgnoreMessage(msg, true)) return;
+
+        const replyMessage = msg.reply_to_message;
+
+        const options = {};
+        if (msg.is_topic_message) {
+            options.message_thread_id = msg.message_thread_id
+        }
+
         if (replyMessage && replyMessage.text) {
             const text = replyMessage.text;
 
@@ -134,7 +142,10 @@ bot.onText(/\/spam/, async (msg) => {
             });
 
             // delete marked message
-            await bot.deleteMessage(msg.chat.id, replyMessage.message_id);   
+            await bot.deleteMessage(msg.chat.id, replyMessage.message_id);
+
+            // ban user
+            await bot.banChatMember(msg.chat.id, replyMessage.from.id)
         }
 
         // delete message with command
