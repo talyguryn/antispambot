@@ -139,14 +139,23 @@ bot.onText(/\/spam/, async (msg) => {
                 ...options
             });
 
-            // delete marked message
-            await bot.deleteMessage(msg.chat.id, replyMessage.message_id);
+            try {
+                // delete marked message
+                await bot.deleteMessage(msg.chat.id, replyMessage.message_id);
 
-            // ban user
-            await bot.banChatMember(msg.chat.id, replyMessage.from.id)
+                // ban user
+                await bot.banChatMember(msg.chat.id, replyMessage.from.id)
+            } catch (e) {
+                await bot.sendMessage(msg.chat.id, `У меня не хватает прав удалить сообщение и забанить автора.`, {
+                    reply_to_message_id: replyMessage.message_id,
+                    ...options
+                });
+            }
         }
 
         // delete message with command
         await bot.deleteMessage(msg.chat.id, msg.message_id);
-    } catch (e) {}
+    } catch (e) {
+        console.log('[ANTISPAM] error /spam:', e);
+    }
 });
