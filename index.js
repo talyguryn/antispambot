@@ -100,9 +100,9 @@ bot.on('text', async (msg) => {
             try {
                 await bot.deleteMessage(msg.chat.id, msg.message_id);
 
-                await bot.sendMessage(msg.chat.id, 'Я удалил сообщение, которое было похоже на спам.', {
-                    ...options
-                });
+                // await bot.sendMessage(msg.chat.id, 'Я удалил сообщение, которое было похоже на спам.', {
+                //     ...options
+                // });
             } catch (e) {
                 await bot.sendMessage(msg.chat.id, 'Похоже на спам, но у меня не хватает прав удалить сообщение.', {
                     reply_to_message_id: msg.message_id,
@@ -134,10 +134,10 @@ bot.onText(/\/spam/, async (msg) => {
             await bot.sendMessage(process.env.ADMIN_CHAT_ID, "👆 Помечено как спам");
 
             // reply to user
-            await bot.sendMessage(msg.chat.id, `Спасибо, присмотрюсь к таким сообщениям внимательнее.`, {
-                reply_to_message_id: replyMessage.message_id,
-                ...options
-            });
+            // await bot.sendMessage(msg.chat.id, `Спасибо, присмотрюсь к таким сообщениям внимательнее.`, {
+            //     reply_to_message_id: replyMessage.message_id,
+            //     ...options
+            // });
 
             try {
                 // delete marked message
