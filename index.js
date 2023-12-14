@@ -73,12 +73,12 @@ const doesBotNeedToIgnoreMessage = async (msg, needToRemoveMessage = false) => {
                   console.log(e);
                 }
             }
-
-            /**
-             * Skip message processing
-             */
-            return true;
         }
+
+        /**
+         * Skip message processing
+         */
+        return true;
     }
 }
 
