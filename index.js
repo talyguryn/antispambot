@@ -129,8 +129,6 @@ bot.onText(/\/spam/, async (msg) => {
         }
 
         if (replyMessage && replyMessage.text) {
-            const text = replyMessage.text;
-
             // send message to admin for review
             await bot.forwardMessage(process.env.ADMIN_CHAT_ID, msg.chat.id, replyMessage.message_id);
             await bot.sendMessage(process.env.ADMIN_CHAT_ID, "👆 Помечено как спам");
