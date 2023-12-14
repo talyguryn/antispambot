@@ -103,6 +103,8 @@ bot.on('text', async (msg) => {
                 // await bot.sendMessage(msg.chat.id, 'Я удалил сообщение, которое было похоже на спам.', {
                 //     ...options
                 // });
+
+                await bot.banChatMember(msg.chat.id, msg.from.id)
             } catch (e) {
                 await bot.sendMessage(msg.chat.id, 'Похоже на спам, но у меня не хватает прав удалить сообщение.', {
                     reply_to_message_id: msg.message_id,
