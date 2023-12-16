@@ -27,6 +27,17 @@ const isGroupChat = (msg) => {
     return ['group', 'supergroup'].includes(msg.chat.type);
 }
 
+const isFromAdmin = async (msg) => {
+    if (!isGroupChat(msg)) return true;
+
+    const adminsList = await bot.getChatAdministrators(msg.chat.id);
+    const adminIds = adminsList.map(admin => {
+        return admin.user.id;
+    })
+
+    return adminIds.includes(msg.from.id);
+}
+
 /**
  * Check if we need to remove and ignore user's message
  *
@@ -97,6 +108,8 @@ bot.on('text', async (msg) => {
 
             await bot.forwardMessage(process.env.ADMIN_CHAT_ID, msg.chat.id, msg.message_id);
             
+            if (isFromAdmin(msg)) return;
+
             try {
                 await bot.deleteMessage(msg.chat.id, msg.message_id);
 

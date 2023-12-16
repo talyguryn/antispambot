@@ -8,5 +8,5 @@ module.exports = (msg) => {
   const text = preprocessText(msg.text);
   if (!text) return false;
 
-  return detectSpam(text, getSpamMessages(), 0.5);;
+  return detectSpam(text, getSpamMessages(), 0.6);
 }
