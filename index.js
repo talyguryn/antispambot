@@ -108,7 +108,7 @@ bot.on('text', async (msg) => {
 
             await bot.forwardMessage(process.env.ADMIN_CHAT_ID, msg.chat.id, msg.message_id);
             
-            if (isFromAdmin(msg)) return;
+            // if (isFromAdmin(msg)) return;
 
             try {
                 await bot.deleteMessage(msg.chat.id, msg.message_id);
