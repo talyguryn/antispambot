@@ -4,9 +4,9 @@
 
 Welcome to Telegram Spam Filter Bot! This project aims to provide a robust solution for detecting spam messages within Telegram groups. By utilizing TF-IDF vectorizer and a comprehensive database of sample spam messages, this bot effectively identifies and filters out spam, ensuring a cleaner and more enjoyable group chatting experience.
 
-Open in Telegram → [@spam_filter_robot](https://t.me/spam_filter_robot)
+Try [@spam_filter_robot](https://t.me/spam_filter_robot) in Telegram.
 
-> 👋 **Help Wanted**: We are looking for contributors to help improve the bot's spam detection accuracy and add new features. If you are interested in contributing, please check out the [Contributing](#contributing) section below.
+> 👋 **Help Wanted**: We are looking for contributors to help improve the bot's spam detection accuracy and add new features. If you are interested, please check out the [Contributing](#contributing) section below.
 
 ## Mission
 
