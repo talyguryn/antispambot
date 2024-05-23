@@ -9,6 +9,7 @@
     "dotenv": "^16.3.1",
     "mathjs": "^12.2.0",
     "natural": "^6.10.3",
-    "node-telegram-bot-api": "^0.64.0"
+    "node-telegram-bot-api": "^0.64.0",
+    "posthog-node": "^4.0.1"
   }
 }
